@@ -2,7 +2,7 @@
   "main":
   {
     "tag": "div",
-    "class": "openid2"
+    "class": "openid2",
   },
   "logout":
   {

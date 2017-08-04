@@ -7,7 +7,7 @@ module.exports = function (grunt) {
         //serve files on localhost:9000
         serve: {
             options: {
-                port: 9000
+                port: 80
             }
         },
         //live reload on source change

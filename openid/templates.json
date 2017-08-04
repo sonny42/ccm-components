@@ -2,33 +2,33 @@
   "main":
   {
     "tag": "div",
-    "class": "openid2",
+    "class": "openid2"
   },
   "logout":
   {
-	"tag":"button",
-	"type":"button",
-	"inner": "%text%",
-	"onclick": "%onclick%"
+    "tag":"button",
+    "type":"button",
+    "inner": "%text%",
+    "onclick": "%onclick%"
   },
-  "input": 
+  "input":
   {
     "tag": "div",
     "class": "inputdiv",
     "inner":
-	{
-          "tag": "form",
-		  "method":"get",
-		  "action":"%actionUrl%&%actionUrl2",
-		  "class":"form",
-          "inner": [
-            {
-              "tag": "input",
-              "type": "submit",
-              "value": "Login with OpenId"
-            }
-          ],
-          "onsubmit": "%onsubmit%"
-	}
+    {
+      "tag": "form",
+      "method":"get",
+      "action":"%actionUrl%&%actionUrl2",
+      "class":"form",
+      "inner": [
+        {
+          "tag": "input",
+          "type": "submit",
+          "value": "Login with OpenId"
+        }
+      ],
+      "onsubmit": "%onsubmit%"
+    }
   }
 }

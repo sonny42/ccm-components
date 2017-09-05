@@ -8,7 +8,7 @@ ccm.component( {
 		roles: ['Dozent', 'Student', 'Tutor', 'Administrator'],
 		adminRole: 'Administrator',
 		superAdmin: 'philipp.sonnenberger@gmail.com',
-		openid:  [ ccm.instance, 'http://localhost/ccm/openid2/ccm.openid2.js' ],
+		openid:  [ ccm.instance, 'http://localhost/ccm/openid2/ccm.openid.js' ],
 		loggedInStore:
 		//[ccm.store , { store: 'openid_login' }],
 		[ccm.store , { url: 'ws://ccm2.inf.h-brs.de/index.js', store: 'openid_login' }],

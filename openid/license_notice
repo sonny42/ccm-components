@@ -1,5 +1,5 @@
-The files 'openidconnect.js' and 'sha256.js' in this directory contain 3rd party code.
-All code in these files is not published under the license mentioned in this repository.
-However the different licenses are included in the files. Please respect them if you consider to use the code.
+The file 'openidconnect.js' in this directory contains 3rd party code.
+All code in this file is not published under the license mentioned in this repository.
+However the licenses are included in the file. Please respect them if you consider to use the code.
 
 All other code is published under the license of this repository (MIT).

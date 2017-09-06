@@ -43,7 +43,6 @@
                                 }
                         }
                 },
-                style: [ 'ccm.load', 'style.css' ],
                 openid: ['ccm.load' , 'openidconnect.js'],
                 //loggedInStore:
                 //['ccm.store' , { store: 'openid_login' }],
@@ -58,8 +57,8 @@
         {
             var self = this;
             var currentUser = null;
-            self.start = function ( callback )
-            {
+            self.start = function ( callback ) {
+                console.log(self);
                 self.element.innerHtml = '';
                 self.element.appendChild( self.ccm.helper.html( self.html.main ) );
 
@@ -117,23 +116,20 @@
             }
 
             //This gets rendered when the user is logged in
-            function displayLoggedIn(parentElement)
-            {
+            function displayLoggedIn(parentElement) {
                 if(!parentElement) return;
                 displayGreeting(parentElement);
                 displayLogoutButton(parentElement);
             }
 
             //Greeting
-            function displayGreeting(parentElement)
-            {
+            function displayGreeting(parentElement) {
                 if(!parentElement) return;
-                parentElement.innerHTML = 'Willkommen ' + currentUser + '!<br/>';
+                parentElement.innerHTML = 'Welcome ' + currentUser + '!<br/>';
             }
 
             //Logout-Button
-            function displayLogoutButton(parentElement)
-            {
+            function displayLogoutButton(parentElement) {
                 if(!parentElement) return;
                 parentElement.appendChild(self.ccm.helper.html(self.html.logout,
                     {

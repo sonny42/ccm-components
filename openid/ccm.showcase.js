@@ -8,25 +8,31 @@
         name: component_name,
         config:
             {
-                //html: [ 'ccm.get', 'templates.json', 'input.inner.class' ],
-                html:  {
-                    "main":
-                        {
-                            "tag": "div",
-                            "id": "openid_main"
-                        }
-                },
-                style: [ 'ccm.load', 'style.css' ],
-                openid: ['ccm.component' , 'ccm.openid.js'],
+                html:   ['ccm.load', 'templates.json'],
+                style:  ['ccm.load', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 'style.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css'],
+                openid: ['ccm.instance' , 'ccm.openid.js', {redirectUri: 'http://localhost/openid/showcase.html'}],
             },
         Instance: function ()
         {
             var self = this;
-            var currentUser = null;
             self.start = function ( callback ) {
-                //self.element.innerHtml = '';
-                //self.element.appendChild( self.ccm.helper.html( self.html.main ) );
-                //console.log(self.openid.Instance);
+
+                self.element.appendChild( self.ccm.helper.html( self.html.main ) );
+
+                var content_div = self.element.querySelector( '#content-div' );
+
+                if(self.openid.isLoggedIn()) {
+                    var username = self.openid.getCurrentUser();
+                    content_div.appendChild(self.ccm.helper.html(self.html.content_logged_in, {name: username}));
+                } else {
+                    var link = self.openid.getOpenIdURL();
+                    //content_div.appendChild(self.ccm.helper.html(self.html.content_default, {link: link}));
+
+                    //work around to prevent bugged encoding of link url
+                    content_div.appendChild(self.ccm.helper.html(self.html.content_default));
+                    self.element.querySelector( '#link' ).setAttribute('href', link);
+                }
+
                 if ( callback ) callback();
             }
 

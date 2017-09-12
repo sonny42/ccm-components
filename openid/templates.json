@@ -1,0 +1,56 @@
+{
+  "main":  {
+    "tag": "div",
+    "id": "openid-showcase",
+    "class" : "row",
+    "inner": [
+      {
+        "tag": "div",
+        "class": "col"
+      },
+      {
+        "tag": "div",
+        "id": "content-div",
+        "class": "col"
+      },
+      {
+        "tag": "div",
+        "class": "col"
+      }
+    ]
+  },
+  "content_default": {
+    "tag": "div",
+    "inner": [
+      {
+        "tag": "div",
+        "class": "alert alert-warning",
+        "inner": {
+          "tag": "span",
+          "class": "greeting",
+          "inner": "You are currently not logged in."
+        }
+      },
+      {
+        "tag": "span",
+        "id": "provider-text",
+        "inner": "Choose your OpenID provider:<br>"
+      },
+      {
+        "tag": "a",
+        "id": "link",
+        "class": "fa fa-google",
+        "inner": "G"
+      }
+    ]
+  },
+  "content_logged_in": {
+    "tag": "div",
+    "class": "alert alert-success",
+    "inner": {
+      "tag": "span",
+      "class": "greeting",
+      "inner": "Hello! You successfully logged in using OpenID Connect.<br> Your ID is: %name%"
+    }
+  }
+}

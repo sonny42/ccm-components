@@ -44,9 +44,6 @@
                         }
                 },
                 openid: ['ccm.load' , 'openidconnect.js'],
-                //loggedInStore:
-                //['ccm.store' , { store: 'openid_login' }],
-                //    ['ccm.store' , { url: 'wss://ccm.inf.h-brs.de', store: 'openid_login' }],
                 clientId: '1096722142749-hcr71g909c47htrucd1ib31oaogfd0am.apps.googleusercontent.com',
                 redirectUri: 'http://localhost/ccm/openid/index.html',
                 //debug page: http://localhost/openidconnectjstest/callback.html
@@ -58,7 +55,6 @@
             var self = this;
             var currentUser = null;
             self.start = function ( callback ) {
-                console.log(self);
                 self.element.innerHtml = '';
                 self.element.appendChild( self.ccm.helper.html( self.html.main ) );
 
@@ -91,6 +87,8 @@
 
             //Build OpenID URL
             self.getOpenIdURL = function () {
+                debug('redirect_uri: ' + self.redirectUri);
+                debug('client_id: ' + self.clientId);
                 var clientInfo = {
                     client_id : self.clientId,
                     redirect_uri : self.redirectUri
@@ -111,7 +109,7 @@
 
             //util function to check whether the user is logged in
             self.isLoggedIn = function () {
-                if(!getCurrentUser()) return false;
+                if(!self.getCurrentUser()) return false;
                 return true;
             }
 

@@ -43,9 +43,9 @@
                                 }
                         }
                 },
-                openid: ['ccm.load' , 'openidconnect.js'],
+                openid: ['ccm.load' , '/ccm-components/openid/openidconnect.js'],
                 clientId: '1096722142749-hcr71g909c47htrucd1ib31oaogfd0am.apps.googleusercontent.com',
-                redirectUri: 'http://localhost/ccm/openid/index.html',
+                redirectUri: 'http://localhost/ccm-components/openid/index.html',
                 //debug page: http://localhost/openidconnectjstest/callback.html
                 discoveryUri: 'https://accounts.google.com/',
                 debug: false //set this to true to enable debug messages

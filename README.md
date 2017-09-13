@@ -4,4 +4,4 @@ This repository contains all my components for the _ccm_ framework. For more det
 
 ## Component list:
 - openid : OpenID Connect authentication component
-- ...
+- openid-showcase: Showcase how to use the openid component

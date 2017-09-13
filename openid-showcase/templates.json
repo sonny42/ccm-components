@@ -39,8 +39,7 @@
       {
         "tag": "a",
         "id": "link",
-        "class": "fa fa-google",
-        "inner": "G"
+        "class": "fa fa-google"
       }
     ]
   },

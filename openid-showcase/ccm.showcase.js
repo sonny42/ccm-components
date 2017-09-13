@@ -10,7 +10,8 @@
             {
                 html:   ['ccm.load', 'templates.json'],
                 style:  ['ccm.load', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 'style.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css'],
-                openid: ['ccm.instance' , 'ccm.openid.js', {redirectUri: 'http://localhost/openid/showcase.html'}],
+                //openid: ['ccm.instance' , '/ccm-components/openid/ccm.openid.js', {redirectUri: 'http://localhost/ccm-components/openid-showcase/index.html'}],
+                openid: ['ccm.instance' , '/ccm-components/openid/ccm.openid.js', {redirectUri: 'https://sonny42.github.io/ccm-components/openid-showcase/index.html'}],
             },
         Instance: function ()
         {

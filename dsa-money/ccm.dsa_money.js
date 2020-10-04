@@ -10,7 +10,7 @@
 
     name: 'dsa-money',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.3.min.js',
 	
 	config: {
 		'unit_block_template': [ 'ccm.load', 'money_unit_block.js' ],

@@ -14,7 +14,7 @@ For more details on _ccm_ see: https://github.com/ccmjs/ccm.
 
 ### Fun
 
-- **dsa-money** : Money tracker for the pen and paper RPG DSA
+- **dsa-money** : Money tracker for the pen and paper RPG DSA. Demo: https://sonny42.github.io/ccm-components/dsa-money/index_dsa_money.html
 
 
 

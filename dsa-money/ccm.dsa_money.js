@@ -81,19 +81,19 @@
 			};
 			
 			this.renderDublonen = function() {
-				this.dublonenBlock = this.renderMoney(this.dublonenBlock, 'dublonen', false, true);
+				this.dublonenBlock = this.renderMoney(this.dublonenBlock, 'Dukaten', false, true);
 			};
 			this.renderSilber = function() {
-				this.silberBlock = this.renderMoney(this.silberBlock, 'silber', false, false);
+				this.silberBlock = this.renderMoney(this.silberBlock, 'Silber', false, false);
 			};
 			this.renderHeller = function() {
-				this.hellerBlock = this.renderMoney(this.hellerBlock, 'heller', false, false);
+				this.hellerBlock = this.renderMoney(this.hellerBlock, 'Heller', false, false);
 			};
 			this.renderKreuzer = function() {
-				this.kreuzerBlock = this.renderMoney(this.kreuzerBlock, 'kreuzer', true, false);
+				this.kreuzerBlock = this.renderMoney(this.kreuzerBlock, 'Kreuzer', true, false);
 			};
 			
-			this.renderMoney = function(oldBlock, unitName, disbableFirst, disableLast) {
+			this.renderMoney = function(oldBlock, unitName, excludeFirst, excludeLast) {
 				let amount = this.money[unitName];
 				let newBlock = this.ccm.helper.html(this.unit_block_template, 
 					{
@@ -109,22 +109,34 @@
 						convertPlusFunc: convertUpHandler
 					}
 				);
+				//disabled logic
+				//convert down button
+				//console.log(newBlock.childNodes[0].childNodes[0]);
+				let convertDownButton = newBlock.childNodes[0].childNodes[0];
+				if(excludeFirst) {
+					convertDownButton.style.display = 'none';
+				} else if( amount < 1) {					
+					convertDownButton.disabled = true;
+				}
 				let buttonGroupLeft = newBlock.childNodes[1];
-				if(disbableFirst || amount < 1) {
+				//minus buttons
+				if(amount < 10) {
 					buttonGroupLeft.childNodes[0].disabled = true;
 				}
-				if(amount < 10) {
+				if(amount < 5) {
 					buttonGroupLeft.childNodes[1].disabled = true;
 				}
-				if(amount < 5) {
+				if(amount < 1) {
 					buttonGroupLeft.childNodes[2].disabled = true;
 				}
-				if(amount < 1) {
-					buttonGroupLeft.childNodes[3].disabled = true;
-				}
+				//value field
 				newBlock.childNodes[2].childNodes[0].disabled = true;
-				if(disableLast || amount < 10) {
-					newBlock.childNodes[3].childNodes[3].disabled = true;
+				//convert up button
+				let convertUpButton = newBlock.childNodes[4].childNodes[0];
+				if(excludeLast) {
+					convertUpButton.style.display = 'none';
+				} else if(amount < 10) {
+					convertUpButton.disabled = true;
 				}
 
 				return newBlock;
@@ -136,6 +148,7 @@
 				this.renderHeller();
 				this.renderKreuzer();
 				this.updateContainer();
+				this.saveMoney();
 			};
 			
 			this.updateContainer = function() {
@@ -153,11 +166,20 @@
 			}
 			
 			this.getMoney = function() {
-				return {dublonen: 0, silber: 0 , heller: 0, kreuzer: 0};
+				let money = localStorage.getItem('money');
+				if(money) {
+					console.log('money found in storage');
+					return JSON.parse(money);
+				} else {
+					return {Dukaten: 0, Silber: 0 , Heller: 0, Kreuzer: 0};
+				}
+			};
+			this.saveMoney = function() {
+				localStorage.setItem('money',JSON.stringify(this.money));
 			};
 			
 			this.money = this.getMoney();
-			this.moneyOrder = ['dublonen','silber','heller','kreuzer'];
+			this.moneyOrder = ['Dukaten','Silber','Heller','Kreuzer'];
 			
 			this.loadBootstrap();
 			this.element.innerHTML = '';

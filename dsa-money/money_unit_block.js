@@ -5,12 +5,8 @@ ccm.files[ 'money_unit_block.js' ] = {
 	"inner": [
 		{
 			"tag": "div",
-			"class": "col-lg-2"
-		},
-		{
-			"tag": "div",
-			"class": "col-lg-3",
-			"style": "text-align:center",
+			"class": "col-lg-2",
+			"style": "text-align:right",
 			"inner": [
 				{
 					"tag": "button",
@@ -19,7 +15,15 @@ ccm.files[ 'money_unit_block.js' ] = {
 					"inner": "Convert Down",
 					"value": "%unit%",
 					"onclick": "%convertMinusFunc%",
-				},{
+				}
+			]
+		},
+		{
+			"tag": "div",
+			"class": "col-lg-3",
+			"style": "text-align:center",
+			"inner": [
+				{
 					"tag": "button",
 					"class": "btn btn-primary buttonSpacer",
 					"type" : "button",
@@ -81,7 +85,14 @@ ccm.files[ 'money_unit_block.js' ] = {
 					"inner": "+10",
 					"value": "%unit%",
 					"onclick": "%plusTenFunc%"
-				},{
+				}
+			]
+		},
+		{
+			"tag": "div",
+			"class": "col-lg-2",
+			"inner": [
+				{
 					"tag": "button",
 					"class": "btn btn-primary",
 					"type" : "button",
@@ -91,10 +102,6 @@ ccm.files[ 'money_unit_block.js' ] = {
 					"disabled" : ""
 				}
 			]
-		},
-		{
-			"tag": "div",
-			"class": "col-lg-2"
 		},
 	]
 };

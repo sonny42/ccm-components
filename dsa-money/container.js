@@ -9,8 +9,13 @@ ccm.files[ 'container.js' ] = {
 		"inner": "%text%"
 	},{
 		"tag": "div",
-		"id": "content_text_container",
+		"id": "money_container",
 		"style": "margin-top:50px",
-		"inner": "%content%"
+		"inner": "%moneyBlocks%"
+	},{
+		"tag": "div",
+		"id": "import_export_container",
+		"style": "margin-top:50px",
+		"inner": "%importExportContent%"
 	}]
 }

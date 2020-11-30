@@ -15,6 +15,7 @@
 	config: {
 		'unit_block_template': [ 'ccm.load', 'money_unit_block.js' ],
 		'container_template': [ 'ccm.load', 'container.js' ],
+		'import_export_template': [ 'ccm.load', 'import_export.js' ],
 	},
 
     Instance: function () {
@@ -142,11 +143,43 @@
 				return newBlock;
 			};
 			
+			this.importExportText = '';
+			let exportHandler = function() {
+				me.export = true;
+				me.importExportText = JSON.stringify(me.money);
+				me.renderImportExport();
+				me.updateContainer();
+			};
+			
+			let importHandler = function() {
+				me.export = false;
+				try {
+					const value = me.element.querySelector("#importExportTextArea").value;
+					me.money = JSON.parse(value);
+					me.importExportText = '';
+					me.renderAll();
+				} catch(err) {
+					console.log(err);
+					me.renderImportExport();
+					me.updateContainer();
+				}
+			};
+
+			this.renderImportExport = () => {
+				this.importExportContent = this.ccm.helper.html(this.import_export_template,
+				{
+					exportHandler: exportHandler,
+					importHandler: importHandler,
+					text:this.importExportText
+				});
+			};
+			
 			this.renderAll = function() {
 				this.renderDublonen();
 				this.renderSilber();
 				this.renderHeller();
 				this.renderKreuzer();
+				this.renderImportExport();
 				this.updateContainer();
 				this.saveMoney();
 			};
@@ -159,11 +192,14 @@
 				this.container = this.ccm.helper.html(this.container_template, 
 					{
 						text: welcomeText,
-						content: [this.dublonenBlock, this.silberBlock, this.hellerBlock, this.kreuzerBlock]
+						moneyBlocks: [this.dublonenBlock, this.silberBlock, this.hellerBlock, this.kreuzerBlock],
+						importExportContent: this.importExportContent
 					}
 				);
 				this.element.appendChild(this.container);
-			}
+			};
+			
+			
 			
 			this.getMoney = function() {
 				let money = localStorage.getItem('money');
